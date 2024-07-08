@@ -1,8 +1,8 @@
 section .data
-    a dd 5         ; define variable a with value 5
-    b dd 10        ; define variable b with value 10
-    c dd 2         ; define variable c with value 2
-    d dd 3         ; define variable d with value 3
+    a dd 5         ; a = 5
+    b dd 10        ; b = 10
+    c dd 2         ; c = 2 
+    d dd 3         ; d = 3
     result dd 0    ; define result variable to store the result
 
 section .text
@@ -13,26 +13,26 @@ _start:
     mov eax, [a]   ; eax = a
     mov ebx, [b]   ; ebx = b
 
-    ; Perform the first multiplication a * b
+    ;( a*b)
     imul ebx       ; eax = eax * ebx (a * b)
 
-    ; Store the result temporarily in a register
+    ; Store the result temporarily in esi
     mov esi, eax   ; esi = a * b
 
-    ; Load the values of c and d into registers
+    ; Load the values of c and d into registers for second half of equation
     mov eax, [c]   ; eax = c
     mov ebx, [d]   ; ebx = d
 
     ; Perform the second multiplication c * d
     imul ebx       ; eax = eax * ebx (c * d)
 
-    ; Add the results of the two multiplications
+    ; Add the results of both multiplcation sides
     add eax, esi   ; eax = (a * b) + (c * d)
 
-    ; Store the result in the result variable
+    ; Store the result in the result variable (result should be 56)
     mov [result], eax
 
     ; Exit the program
-    mov eax, 1     ; syscall number for sys_exit
-    xor ebx, ebx   ; exit code 0
-    int 0x80       ; call kernel
+    mov eax, 1  
+    xor ebx, ebx   
+    int 0x80       
