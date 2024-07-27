@@ -7,10 +7,10 @@ section .text
     global _start
 
 _start:
-    ; Load the number into a register
+    ; loading number into eax resigster
     mov eax, [number]
     
-    ; If the number is 0 or 1, the factorial is 1
+    ; Checking if the number is 0 or 1, the factorial is 1
     cmp eax, 1
     jbe done
     
@@ -18,7 +18,7 @@ _start:
     mov ebx, 1
 
 factorial_loop:
-    ; Multiply ebx (result) by eax (current #)
+    ; Multiply the result (ebx) by the current # (eax)
     imul ebx, eax
     
     ; Decrement eax
